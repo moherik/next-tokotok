@@ -10,6 +10,8 @@ export const SearchBox = () => {
 
   const handleChangeSearchValue = (value: string) => setSearchValue(value);
 
+  const handleClickSuggestion = (value: string) => setSearchValue(value);
+
   const handleClickOutsideSuggestion = (e) => {
     if (inputNode.current.contains(e.target)) {
       return;
@@ -37,6 +39,7 @@ export const SearchBox = () => {
           name="search"
           id="search"
           placeholder="Cari barang apa aja"
+          autoComplete="off"
           onChange={(event) => handleChangeSearchValue(event.target.value)}
         />
         <div className={styles.inputIcon}>
@@ -46,8 +49,12 @@ export const SearchBox = () => {
       {openSuggestion && (
         <div className={styles.suggestion}>
           <ul>
-            <li>Suggestion 1</li>
-            <li>Suggestion 2</li>
+            <li onClick={() => handleClickSuggestion("Suggestion 1")}>
+              Suggestion 1
+            </li>
+            <li onClick={() => handleClickSuggestion("Suggestion 2")}>
+              Suggestion 2
+            </li>
           </ul>
         </div>
       )}
