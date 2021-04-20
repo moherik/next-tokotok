@@ -5,10 +5,10 @@ import {
   FiBox,
   FiHardDrive,
   FiMenu,
-  FiSearch,
   FiShoppingBag,
   FiSmartphone,
 } from "react-icons/fi";
+import { SearchBox } from "../components/SearchBox";
 
 type CategoryType = {
   id: number;
@@ -59,18 +59,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Tokotok</h1>
 
-        <div className={styles.inputBox}>
-          <input
-            className={styles.input}
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Cari barang apa aja"
-          />
-          <div className={styles.inputIcon}>
-            <FiSearch size={24} />
-          </div>
-        </div>
+        <SearchBox />
 
         <div className={styles.grid}>
           {categories.map((item) => (

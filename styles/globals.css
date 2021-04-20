@@ -3,6 +3,8 @@
   --light: #ffffff;
   --dark: #000000;
   --gray: #eaeaea;
+
+  --radius: 10px;
 }
 
 html,

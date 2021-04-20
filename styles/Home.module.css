@@ -61,47 +61,6 @@
   font-size: 1.5rem;
 }
 
-.inputBox {
-  margin-top: 1.2rem;
-  width: 420px;
-  border: solid 3px var(--dark);
-  border-radius: 25px;
-  transition: all 4ms ease;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  overflow: hidden;
-}
-
-.input {
-  font-size: 16px;
-  width: 100%;
-  border: none;
-  padding: 10px 15px;
-}
-
-.input:focus {
-  outline: none;
-}
-
-.inputIcon {
-  width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.inputBox:hover {
-  border-color: var(--primary);
-}
-
-.inputBox:hover > .inputIcon {
-  background-color: var(--primary);
-  color: var(--light);
-  transition: all 0.15s ease;
-}
-
 .grid {
   width: 420px;
   display: flex;
@@ -109,14 +68,14 @@
   align-items: center;
   flex-wrap: wrap;
   margin-top: 3rem;
-  grid-gap: 1.4rem;
+  gap: 1.2rem;
 }
 
 .card {
   padding: 0.5rem 1rem;
   width: calc((100% / 3) - 20px);
   border: solid 3px var(--dark);
-  border-radius: 10px;
+  border-radius: var(--radius);
   cursor: pointer;
   transition: color 0.15s ease, border-color 0.15s ease;
 }
