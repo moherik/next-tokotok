@@ -1,19 +1,30 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
 import styles from "../styles/SearchBox.module.css";
 
-export const SearchBox = () => {
-  const [searchValue, setSearchValue] = useState<string>("");
+interface SearchBoxProps {
+  value?: string;
+  onChange: (val: string) => void;
+  placeholder?: string;
+  autoFocus?: boolean;
+  name?: string;
+  type?: "email" | "text" | "password";
+}
+
+export const SearchBox: React.FC<SearchBoxProps> = ({ onChange, ...rest }) => {
   const [openSuggestion, setOpenSuggestion] = useState(false);
-  const inputNode = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>();
 
-  const handleChangeSearchValue = (value: string) => setSearchValue(value);
+  const handleChangeSearchValue = (val: string) => {
+    setOpenSuggestion(val !== "" ? true : false);
+    onChange(val);
+  };
 
-  const handleClickSuggestion = (value: string) => setSearchValue(value);
+  const handleClickSuggestion = (val: string) => onChange(val);
 
   const handleClickOutsideSuggestion = (e) => {
-    if (inputNode.current.contains(e.target)) {
+    if (inputRef.current.contains(e.target)) {
       return;
     }
 
@@ -21,30 +32,28 @@ export const SearchBox = () => {
   };
 
   useEffect(() => {
-    setOpenSuggestion(searchValue !== "" ? true : false);
-
     document.addEventListener("mousedown", handleClickOutsideSuggestion);
     return () => {
       document.removeEventListener("mousedown", handleClickOutsideSuggestion);
     };
-  }, [searchValue]);
+  }, []);
 
   return (
     <div className={styles.search}>
       <div className={styles.inputBox}>
         <input
-          ref={inputNode}
+          ref={inputRef}
           className={styles.input}
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Cari barang apa aja"
+          type={rest.type}
+          name={rest.name}
+          placeholder={rest.placeholder}
           autoComplete="off"
+          value={rest.value}
           onChange={(event) => handleChangeSearchValue(event.target.value)}
         />
-        <div className={styles.inputIcon}>
+        <button type="submit" className={styles.inputIcon}>
           <FiSearch size={24} />
-        </div>
+        </button>
       </div>
       {openSuggestion && (
         <div className={styles.suggestion}>
