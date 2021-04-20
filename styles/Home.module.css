@@ -157,6 +157,7 @@
 }
 
 @media (max-width: 600px) {
+  .inputBox,
   .grid {
     width: 100%;
   }
