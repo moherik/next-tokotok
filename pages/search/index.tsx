@@ -11,12 +11,51 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   return { props: { search } };
 };
 
+interface Item {
+  id: number;
+  title: string;
+  image: string;
+  price: string;
+  source: string;
+}
+
 const SearchPage = ({ search }) => {
   const [value, setValue] = useState<string>();
 
   useEffect(() => {
     setValue(search?.toString());
   }, []);
+
+  const items: Item[] = [
+    {
+      id: 1,
+      title: "Judul Produk",
+      image: "/images/smartphone.jpg",
+      price: "2000000",
+      source: "/images/tokped.jpg",
+    },
+    {
+      id: 2,
+      title: "Judul Produk 2",
+      image: "/images/produk2.jpg",
+      price: "2000000",
+      source: "/images/tokped.jpg",
+    },
+    {
+      id: 3,
+      title: "1/7th Scale Rem (Re:ZERO -Starting Life in Another World",
+      image: "/images/produk3.jpg",
+      price: "2000000",
+      source: "/images/tokped.jpg",
+    },
+    {
+      id: 4,
+      title: "Re: hidup Di Dunia Yang Berbeda",
+      image: "/images/produk4.jpg",
+      price: "2000000",
+      source: "/images/tokped.jpg",
+    },
+  ];
 
   return (
     <>
@@ -34,6 +73,39 @@ const SearchPage = ({ search }) => {
             value={value || ""}
             onChange={(value) => setValue(value)}
           />
+        </div>
+
+        <div className={styles.items}>
+          {items.map((item) => (
+            <div className={styles.itemCard} key={item.id}>
+              <Link href="">
+                <img
+                  src={item.image}
+                  className={styles.itemImage}
+                  alt={item.title}
+                />
+              </Link>
+              <div className={styles.itemContent}>
+                <div className={styles.itemLeft}>
+                  <Link href="">
+                    <a className={styles.itemTitle}>{item.title}</a>
+                  </Link>
+                  <p className={styles.itemPrice}>{item.price}</p>
+                </div>
+                <div className={styles.itemRight}>
+                  <div className={styles.itemIcon}>
+                    <img
+                      className={styles.logo}
+                      src={item.source}
+                      width="32"
+                      height="32"
+                      alt="logo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>
