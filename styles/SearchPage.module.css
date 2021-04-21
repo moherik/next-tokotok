@@ -20,6 +20,9 @@
 }
 
 @media (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
   .header {
     flex-direction: column;
   }
