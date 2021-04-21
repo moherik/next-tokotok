@@ -60,7 +60,9 @@ export const Category = () => {
           onClick={() => handleClickCategory(item.id)}
         >
           <div className={styles.cardIcon}>{item.icon}</div>
-          <h4 className={styles.cardTitle}>{item.name}</h4>
+          <h4 className={styles.cardTitle} title={item.name}>
+            {item.name}
+          </h4>
         </div>
       ))}
     </div>
