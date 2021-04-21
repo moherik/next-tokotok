@@ -21,7 +21,6 @@
   height: 200px;
   object-fit: cover;
   object-position: top;
-  cursor: pointer;
 }
 
 .itemCard .itemContent {
@@ -31,7 +30,6 @@
 }
 
 .itemCard .itemContent .itemTitle {
-  font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
   display: -webkit-box;
@@ -40,19 +38,19 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin-top: 4px;
-  margin-bottom: 4px;
 }
 
-.itemCard .itemContent .itemTitle:hover {
+.itemCard .itemContent a:hover {
   text-decoration: underline;
 }
 
-.itemCard .itemContent .itemPrice,
-.itemCard .itemContent .itemUrl {
+.itemCard .itemContent p {
   margin: 0;
 }
 
 .itemCard .itemContent .itemPrice {
+  color: var(--primary);
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
@@ -62,7 +60,22 @@
   overflow: hidden;
 }
 
-.itemCard .itemContent .itemRight {
+.itemCard .itemContent .itemRating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.itemCard .itemContent .itemRating .icon {
+  color: var(--orange);
+  font-size: 1.2rem;
+}
+
+.itemCard .itemContent .itemRating .textRating {
+  font-size: 0.8rem;
+}
+
+/* .itemCard .itemContent .itemRight {
   margin-left: auto;
 }
 
@@ -71,7 +84,7 @@
   align-items: center;
   gap: 0.4rem;
   margin-top: 0.4rem;
-}
+} */
 
 @media (max-width: 600px) {
   .itemCard {

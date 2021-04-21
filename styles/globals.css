@@ -1,9 +1,10 @@
 :root {
-  --primary: #9c27b0;
+  --primary: #673ab7;
   --light: #ffffff;
   --dark: #000000;
   --gray: #eaeaea;
   --text-muted: #70757a;
+  --orange: #ff9800;
 
   --radius: 10px;
 }

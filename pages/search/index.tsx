@@ -25,36 +25,52 @@ const SearchPage = ({ search }) => {
       title: "HP Terbaik Vivo Y50 Diskon 50%",
       image: "/images/smartphone.jpg",
       price: 2000000,
-      source: "/images/tokped.jpg",
+      store: {
+        type: "tokopedia",
+        name: "Toko Pak Edi",
+      },
       url:
         "https://www.tokopedia.com/jayapc/ssd-v-gen-128gb-sata-3-vgen-128-gb",
+      rating: { star: 4, total: 8 },
     },
     {
       id: 2,
       title: "Judul Produk 2",
       image: "/images/produk2.jpg",
       price: 1500000,
-      source: "/images/tokped.jpg",
+      store: {
+        type: "bukalapak",
+        name: "Bukatoko",
+      },
       url:
         "https://www.tokopedia.com/jayapc/ssd-v-gen-128gb-sata-3-vgen-128-gb",
+      rating: { star: 5, total: 19 },
     },
     {
       id: 3,
       title: "1/7th Scale Rem (Re:ZERO -Starting Life in Another World",
       image: "/images/produk3.jpg",
       price: 8000000,
-      source: "/images/tokped.jpg",
+      store: {
+        type: "shopee",
+        name: "Mbak Sofi",
+      },
       url:
         "https://www.tokopedia.com/jayapc/ssd-v-gen-128gb-sata-3-vgen-128-gb",
+      rating: { star: 4, total: 10 },
     },
     {
       id: 4,
       title: "Re: hidup Di Dunia Yang Berbeda",
       image: "/images/produk4.jpg",
       price: 500000,
-      source: "/images/tokped.jpg",
+      store: {
+        type: "tokopedia",
+        name: "Toko Pak Edi",
+      },
       url:
         "https://www.tokopedia.com/jayapc/ssd-v-gen-128gb-sata-3-vgen-128-gb",
+      rating: { star: 0, total: 0 },
     },
   ];
 
