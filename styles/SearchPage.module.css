@@ -14,6 +14,18 @@
   gap: 1.2rem;
 }
 
+.header.fixed {
+  position: fixed;
+  margin-top: 0;
+  left: 0;
+  right: 0;
+  background: var(--light);
+  padding: 10px;
+  gap: 1rem;
+  flex-direction: row;
+  border-bottom: solid var(--border-size) var(--dark);
+}
+
 .header h3.brand {
   margin: 0;
   font-size: 2rem;

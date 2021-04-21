@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { convertNumberToRP } from "../utils/currencyUtil";
 import { MdStar } from "react-icons/md";
 

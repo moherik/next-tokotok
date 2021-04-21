@@ -5,7 +5,7 @@
 }
 
 .inputBox {
-  border: solid 3px var(--dark);
+  border: solid var(--border-size) var(--dark);
   border-radius: 25px;
   transition: all 4ms ease;
   display: flex;
@@ -48,7 +48,7 @@
 
 .suggestion {
   position: absolute;
-  border: solid;
+  border: solid var(--border-size) var(--dark);
   width: 100%;
   background: var(--light);
   border-radius: var(--radius);

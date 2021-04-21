@@ -11,7 +11,7 @@
 .card {
   padding: 0.5rem 1rem;
   width: calc((100% / 3) - 20px);
-  border: solid 3px var(--dark);
+  border: solid var(--border-size) var(--dark);
   border-radius: var(--radius);
   cursor: pointer;
   background-color: var(--light);

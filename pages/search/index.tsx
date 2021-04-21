@@ -14,9 +14,22 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
 const SearchPage = ({ search }) => {
   const [value, setValue] = useState<string>();
+  const [isFixed, setIsFixed] = useState(false);
+
+  const handleOnScroll = () => {
+    if (window.scrollY > 100) {
+      setIsFixed(true);
+    } else {
+      setIsFixed(false);
+    }
+  };
 
   useEffect(() => {
     setValue(search?.toString());
+    document.addEventListener("scroll", handleOnScroll);
+    return () => {
+      document.removeEventListener("scroll", handleOnScroll);
+    };
   }, []);
 
   const items: ItemResult[] = [
@@ -72,6 +85,19 @@ const SearchPage = ({ search }) => {
         "https://www.tokopedia.com/jayapc/ssd-v-gen-128gb-sata-3-vgen-128-gb",
       rating: { star: 0, total: 0 },
     },
+    {
+      id: 4,
+      title: "Re: hidup Di Dunia Yang Berbeda",
+      image: "/images/produk4.jpg",
+      price: 500000,
+      store: {
+        type: "tokopedia",
+        name: "Toko Pak Edi",
+      },
+      url:
+        "https://www.tokopedia.com/jayapc/ssd-v-gen-128gb-sata-3-vgen-128-gb",
+      rating: { star: 0, total: 0 },
+    },
   ];
 
   return (
@@ -79,7 +105,7 @@ const SearchPage = ({ search }) => {
       <Header title={`${search || ""} - Hasil Pencarian Tokotok`} />
 
       <div className={styles.container}>
-        <div className={styles.header}>
+        <div className={[styles.header, isFixed && styles.fixed].join(" ")}>
           <h3 className={styles.brand}>
             <Link href="/">Tokotok</Link>
           </h3>
