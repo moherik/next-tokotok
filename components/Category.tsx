@@ -9,11 +9,11 @@ import {
 
 import styles from "../styles/Category.module.css";
 
-type CategoryType = {
+export interface CategoryType {
   id: number;
   name: string;
   icon: React.ReactNode;
-};
+}
 
 export const Category = () => {
   const categories: CategoryType[] = [

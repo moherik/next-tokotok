@@ -3,23 +3,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Header } from "../../components/Header";
 import { SearchBox } from "../../components/SearchBox";
+import { ItemResult, SearchResult } from "../../components/SearchResult";
 
 import styles from "../../styles/SearchPage.module.css";
-import { SearchResult } from "../../components/SearchResult";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { s: search } = query;
   return { props: { search } };
 };
-
-export interface ItemResult {
-  id: number;
-  title: string;
-  image: string;
-  price: string;
-  source: string;
-  url: string;
-}
 
 const SearchPage = ({ search }) => {
   const [value, setValue] = useState<string>();
@@ -33,7 +24,7 @@ const SearchPage = ({ search }) => {
       id: 1,
       title: "HP Terbaik Vivo Y50 Diskon 50%",
       image: "/images/smartphone.jpg",
-      price: "Rp. 2.000.000,-",
+      price: 2000000,
       source: "/images/tokped.jpg",
       url:
         "https://www.tokopedia.com/jayapc/ssd-v-gen-128gb-sata-3-vgen-128-gb",
@@ -42,7 +33,7 @@ const SearchPage = ({ search }) => {
       id: 2,
       title: "Judul Produk 2",
       image: "/images/produk2.jpg",
-      price: "Rp. 1.500.000,-",
+      price: 1500000,
       source: "/images/tokped.jpg",
       url:
         "https://www.tokopedia.com/jayapc/ssd-v-gen-128gb-sata-3-vgen-128-gb",
@@ -51,7 +42,7 @@ const SearchPage = ({ search }) => {
       id: 3,
       title: "1/7th Scale Rem (Re:ZERO -Starting Life in Another World",
       image: "/images/produk3.jpg",
-      price: "Rp. 8.000.000,-",
+      price: 8000000,
       source: "/images/tokped.jpg",
       url:
         "https://www.tokopedia.com/jayapc/ssd-v-gen-128gb-sata-3-vgen-128-gb",
@@ -60,7 +51,7 @@ const SearchPage = ({ search }) => {
       id: 4,
       title: "Re: hidup Di Dunia Yang Berbeda",
       image: "/images/produk4.jpg",
-      price: "Rp. 500.000,-",
+      price: 500000,
       source: "/images/tokped.jpg",
       url:
         "https://www.tokopedia.com/jayapc/ssd-v-gen-128gb-sata-3-vgen-128-gb",
@@ -84,6 +75,12 @@ const SearchPage = ({ search }) => {
             onChange={(value) => setValue(value)}
           />
         </div>
+
+        <div className={styles.stats}>
+          Menemukan 10.000 hasil untuk pencarian <strong>"{search}"</strong>
+        </div>
+
+        <div className={styles.action}></div>
 
         <SearchResult results={items} />
       </div>

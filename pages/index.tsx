@@ -29,7 +29,7 @@ const HomePage = () => {
         </form>
 
         <footer className={styles.footer}>
-          <a href="/">Copyright &copy; 2021 Awsem</a>
+          <a href="/">Copyright &copy; 2021 mabengga09</a>
         </footer>
       </div>
     </>

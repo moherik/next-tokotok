@@ -1,8 +1,17 @@
 import Link from "next/link";
 import React from "react";
-import { ItemResult } from "../pages/search/index";
+import { convertNumberToRP } from "../utils/currencyUtil";
 
 import styles from "../styles/SearchResult.module.css";
+
+export interface ItemResult {
+  id: number;
+  title: string;
+  image: string;
+  price: number;
+  source: string;
+  url: string;
+}
 
 export const SearchResult: React.FC<{ results: ItemResult[] }> = ({
   results,
@@ -19,7 +28,7 @@ export const SearchResult: React.FC<{ results: ItemResult[] }> = ({
             />
           </Link>
           <div className={styles.itemContent}>
-            <p className={styles.itemPrice}>{item.price}</p>
+            <p className={styles.itemPrice}>{convertNumberToRP(item.price)}</p>
             <Link href="">
               <a className={styles.itemTitle} title={item.title}>
                 {item.title}
