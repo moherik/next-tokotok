@@ -10,6 +10,7 @@ interface SearchBoxProps {
   autoFocus?: boolean;
   name?: string;
   type?: "email" | "text" | "password";
+  required?: boolean;
 }
 
 export const SearchBox: React.FC<SearchBoxProps> = ({ onChange, ...rest }) => {
@@ -42,6 +43,7 @@ export const SearchBox: React.FC<SearchBoxProps> = ({ onChange, ...rest }) => {
     <div className={styles.search}>
       <div className={styles.inputBox}>
         <input
+          required={rest.required}
           ref={inputRef}
           className={styles.input}
           type={rest.type}

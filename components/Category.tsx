@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   FiBox,
   FiHardDrive,
@@ -15,7 +15,9 @@ export interface CategoryType {
   icon: React.ReactNode;
 }
 
-export const Category = () => {
+export const Category: React.FC<{ onChange: (id: number) => void }> = ({
+  onChange,
+}) => {
   const categories: CategoryType[] = [
     {
       id: 0,
@@ -44,9 +46,12 @@ export const Category = () => {
     },
   ];
 
-  const [selected, setSelected] = useState<number>(0);
+  const [selectedId, setSelectedId] = useState<number>(0);
 
-  const handleClickCategory = (itemId: number) => setSelected(itemId);
+  const handleClickCategory = (itemId: number) => {
+    onChange(itemId);
+    setSelectedId(itemId);
+  };
 
   return (
     <div className={styles.grid}>
@@ -54,7 +59,7 @@ export const Category = () => {
         <div
           className={[
             styles.card,
-            selected == item.id && styles.cardActive,
+            selectedId == item.id && styles.cardActive,
           ].join(" ")}
           key={item.id}
           onClick={() => handleClickCategory(item.id)}

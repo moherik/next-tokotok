@@ -8,30 +8,7 @@ import { ItemResult, SearchResult } from "../../components/SearchResult";
 import styles from "../../styles/SearchPage.module.css";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { s: search } = query;
-  return { props: { search } };
-};
-
-const SearchPage = ({ search }) => {
-  const [value, setValue] = useState<string>();
-  const [isFixed, setIsFixed] = useState(false);
-
-  const handleOnScroll = () => {
-    if (window.scrollY > 100) {
-      setIsFixed(true);
-    } else {
-      setIsFixed(false);
-    }
-  };
-
-  useEffect(() => {
-    setValue(search?.toString());
-    document.addEventListener("scroll", handleOnScroll);
-    return () => {
-      document.removeEventListener("scroll", handleOnScroll);
-    };
-  }, []);
-
+  const { q: search, c: categoryId } = query;
   const items: ItemResult[] = [
     {
       id: 1,
@@ -48,7 +25,7 @@ const SearchPage = ({ search }) => {
     },
     {
       id: 2,
-      title: "Judul Produk 2",
+      title: "Boneka Totoro XXL",
       image: "/images/produk2.jpg",
       price: 1500000,
       store: {
@@ -74,7 +51,7 @@ const SearchPage = ({ search }) => {
     },
     {
       id: 4,
-      title: "Re: hidup Di Dunia Yang Berbeda",
+      title: "Jaket Bapak e Narto",
       image: "/images/produk4.jpg",
       price: 500000,
       store: {
@@ -86,10 +63,10 @@ const SearchPage = ({ search }) => {
       rating: { star: 0, total: 0 },
     },
     {
-      id: 4,
-      title: "Re: hidup Di Dunia Yang Berbeda",
-      image: "/images/produk4.jpg",
-      price: 500000,
+      id: 5,
+      title: "Macbook PRO",
+      image: "/images/produk5.jpg",
+      price: 15000000,
       store: {
         type: "tokopedia",
         name: "Toko Pak Edi",
@@ -99,6 +76,29 @@ const SearchPage = ({ search }) => {
       rating: { star: 0, total: 0 },
     },
   ];
+
+  return { props: { search, categoryId, items } };
+};
+
+const SearchPage = ({ search, items }) => {
+  const [value, setValue] = useState<string>();
+  const [isFixed, setIsFixed] = useState(false);
+
+  const handleOnScroll = () => {
+    if (window.scrollY > 100) {
+      setIsFixed(true);
+    } else {
+      setIsFixed(false);
+    }
+  };
+
+  useEffect(() => {
+    setValue(search?.toString());
+    document.addEventListener("scroll", handleOnScroll);
+    return () => {
+      document.removeEventListener("scroll", handleOnScroll);
+    };
+  }, []);
 
   return (
     <>

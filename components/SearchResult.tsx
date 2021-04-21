@@ -26,28 +26,49 @@ export const SearchResult: React.FC<{ results: ItemResult[] }> = ({
 }) => {
   return (
     <div className={styles.items}>
-      {results.map((item) => (
-        <div className={styles.itemCard} key={item.id}>
-          <img src={item.image} className={styles.itemImage} alt={item.title} />
-          <div className={styles.itemContent}>
-            <p className={styles.itemPrice}>{convertNumberToRP(item.price)}</p>
-            <a href={item.url} className={styles.itemTitle} title={item.title}>
-              {item.title}
-            </a>
-            <div style={{ marginTop: "0.4rem" }}>
-              {item.rating?.total > 0 && (
-                <div className={styles.itemRating}>
-                  <MdStar className={styles.icon} />
-                  <span className={styles.textRating}>
-                    {item.rating.star} dari {item.rating.total} ulasan
-                  </span>
-                </div>
-              )}
-              <SourceIcon store={item.store} />
+      {results.length > 0 ? (
+        results.map((item) => (
+          <div className={styles.itemCard} key={item.id}>
+            <img
+              src={item.image}
+              className={styles.itemImage}
+              alt={item.title}
+            />
+            <div className={styles.itemContent}>
+              <p className={styles.itemPrice}>
+                {convertNumberToRP(item.price)}
+              </p>
+              <a
+                href={item.url}
+                className={styles.itemTitle}
+                title={item.title}
+              >
+                {item.title}
+              </a>
+              <div style={{ marginTop: "0.4rem" }}>
+                {item.rating?.total > 0 && (
+                  <div className={styles.itemRating}>
+                    <MdStar className={styles.icon} />
+                    <span className={styles.textRating}>
+                      {item.rating.star} dari {item.rating.total} ulasan
+                    </span>
+                  </div>
+                )}
+                <SourceIcon store={item.store} />
+              </div>
             </div>
           </div>
+        ))
+      ) : (
+        <div>
+          <div>Tidak menemukan apapun 😖</div>
+          <ul>
+            <li>Pastikan keyword pencarian anda benar</li>
+            <li>Coba gunakan kata kunci yang lain</li>
+            <li>Gunakan pilihan semua kategori</li>
+          </ul>
         </div>
-      ))}
+      )}
     </div>
   );
 };

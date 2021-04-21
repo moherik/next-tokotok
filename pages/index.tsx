@@ -7,7 +7,10 @@ import { Category } from "../components/Category";
 import { Header } from "../components/Header";
 
 const HomePage = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>("");
+  const [categoryId, setCategoryId] = useState<number>(0);
+
+  const handleChangeCategory = (id: number) => setCategoryId(id);
 
   return (
     <>
@@ -18,13 +21,15 @@ const HomePage = () => {
           <main className={styles.main}>
             <h1 className={styles.title}>Tokotok</h1>
             <SearchBox
+              required
               type="text"
-              name="s"
+              name="q"
               value={value || ""}
               placeholder="Cari barang dengan mudah"
               onChange={(value) => setValue(value)}
             />
-            <Category />
+            <input type="hidden" name="c" value={categoryId} />
+            <Category onChange={(id) => handleChangeCategory(id)} />
           </main>
         </form>
 
